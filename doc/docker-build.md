@@ -42,3 +42,20 @@ docker run -d -P cgshome2/hello-nodejs
 ```
 docker push cgshome2/hello-nodejs
 ```
+
+## cf-test-go
+- Building & pushing an image from a Dockerfile
+```
+cd docker/cf-test-go
+. build.sh
+```
+
+- Running/Testing app
+```
+sudo docker run -e "PORT=4568" -d -p 4568:4568 cgshome2/cf-test-go
+```
+
+- cf push
+```
+cf push cf-test-go -o cgshome2/cf-test-go
+```
