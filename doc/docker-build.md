@@ -29,7 +29,6 @@ docker push cgshome2/hello-python
 ### hello-nodejs 
 - Building an image from a Dockerfile
 ```
-git clone https://github.com/GunSik2/docker
 cd docker/hello-nodejs
 docker build -t cgshome2/hello-nodejs .
 ```
@@ -41,6 +40,5 @@ docker run -d -P cgshome2/hello-nodejs
 
 - Push an image to Docker Hub
 ```
-docker login --username=<user_username>
 docker push cgshome2/hello-nodejs
 ```
