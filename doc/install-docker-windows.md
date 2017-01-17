@@ -28,8 +28,22 @@ docker-machine start test
 ## Docker Service deploy
 - golang
 ```
-
+$ git clone https://github.com/golang/example
+$ cd example/outyet/
+$ cat Dockerfile
+FROM golang:onbuild
+EXPOSE 8080
+$ docker build -t outyet .
+$ docker run --publish 6060:8080 --name test --rm outyet
 ```
+
+- golang
+```
+cd c:\Users\user\Workspace\test
+vi app.go
+docker run --rm -v /c/Users/user/Workspace/test:/usr/src/myapp -w /usr/src/myapp golang:1.6 go build -v
+```
+
 - redis
 ```
 docker run -p 6379:6379 --name redis -d redis 
@@ -59,3 +73,7 @@ docker run -it --link mysql:mysql --rm mysql sh -c 'mysql -h"192.168.99.100" -P"
 mysql> status
 mysql> show variables like 'c%';
 ```
+
+
+## Reference
+- https://blog.golang.org/docker
