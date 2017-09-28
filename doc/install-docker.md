@@ -1,16 +1,34 @@
 
-- Docker install on ubuntu 14.04
+- DOcker install on ubuntu 16.04
 ```
 $ sudo apt-get update
-$ sudo apt-get install -y apt-transport-https ca-certificates
-$ sudo apt-key adv \
-               --keyserver hkp://ha.pool.sks-keyservers.net:80 \
-               --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-               
-$ echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" | sudo tee /etc/apt/sources.list.d/docker.list  
+$ sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common -y
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo apt-key fingerprint 0EBFCD88
+$ sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
 $ sudo apt-get update
-$ sudo apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
+$ apt-cache madison docker-ce
+docker-ce | 17.09.0~ce-0~ubuntu | https://download.docker.com/linux/ubuntu xenial/stable amd64 Packages
+$ sudo apt-get install docker-ce=17.09.0~ce-0~ubuntu
+$ sudo docker run hello-world
+```
 
-$ sudo apt-get install -y docker-engine
-$ sudo service docker start
+- Post-config
 ```
+$ sudo groupadd docker
+$ sudo usermod -aG docker $USER
+// Log out and log back
+$ docker run hello-world
+```
+
+
+
+## Reference
+- https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository
