@@ -7,6 +7,11 @@ chmod +x "$HOME/bin/docker-machine.exe"
 $ docker-machine version
 ```
 
+## Install Hyper-V 
+- Exec on PowerShell with Admin priviledge 
+```
+Enable-WindowsOptionalFeature -Online -FeatureName:Microsoft-Hyper-V -All
+```
 
 ## Reference
 - https://docs.docker.com/machine/install-machine/
